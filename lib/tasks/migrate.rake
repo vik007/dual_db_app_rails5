@@ -6,14 +6,14 @@ namespace :db do
   end
 
   task :migrate_db1 do
-    ActiveRecord::Base.establish_connection DB1_CONF
+    ActiveRecord::Base.establish_connection :development
     # ActiveRecord::Migrator.migrate("db/migrate")
     ActiveRecord::MigrationContext.new("db/migrate/").migrate
 
   end
 
   task :migrate_db2 do
-    ActiveRecord::Base.establish_connection DB2_CONF
+    ActiveRecord::Base.establish_connection :development2
     # ActiveRecord::Migrator.migrate("db/second_migrate")
     ActiveRecord::MigrationContext.new("db/second_migrate/").migrate
   end

@@ -8,10 +8,10 @@ development:
   database: student
 
 development2:
-  adapter: mysql2
-  encoding: utf8
-  pool: 15
-  username: varunk
+  adapter: sqlserver
+  mode: dblib
   host: localhost
-  password: Tout@2021
+  port: 1433
+  username: sa
+  password: Tout@2018
   database: student_info

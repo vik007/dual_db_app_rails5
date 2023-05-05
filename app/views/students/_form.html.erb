@@ -13,12 +13,22 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age, required: true, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :city %>
+    <%= text_field_tag 'student_info[city]', student.student_info&.city, required: true %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :sex %>
+    <%= text_field_tag 'student_info[sex]', student.student_info&.sex, required: true %>
   </div>
   <div class="actions">
     <%= form.submit %>

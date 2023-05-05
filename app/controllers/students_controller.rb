@@ -25,6 +25,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     respond_to do |format|
+      @student.build_student_info(student_info_params)
       if @student.save
         format.html { redirect_to student_url(@student), notice: "Student was successfully created." }
         format.json { render :show, status: :created, location: @student }
@@ -38,7 +39,7 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1 or /students/1.json
   def update
     respond_to do |format|
-      if @student.update(student_params)
+      if @student.update(student_params) &&  @student.student_info.update(student_info_params)
         format.html { redirect_to student_url(@student), notice: "Student was successfully updated." }
         format.json { render :show, status: :ok, location: @student }
       else
@@ -67,5 +68,9 @@ class StudentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def student_params
       params.require(:student).permit(:name, :age)
+    end
+
+    def student_info_params
+      params.require(:student_info).permit(:sex, :city)
     end
 end
